@@ -1,0 +1,20 @@
+.barStyle {
+    background-color:white;
+    margin:10px;
+    padding:15px;
+}
+
+.sbarStyle{
+        display:flex;
+        flex-direction:row;
+        padding:10px;
+        align-items:center        
+}
+
+.genre-button{
+    display: flex;
+    margin: 5px;
+    padding-bottom: 23px;
+    align-items: center;
+    justify-content: space-between;
+}
