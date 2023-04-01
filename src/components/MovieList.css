@@ -6,20 +6,20 @@
     border-radius:7px;
     background-color:rgb(228, 9, 20);
     color:white;
-    position: relative;
+    /* position: relative; */
 }
 
 .inner-style{
     transition: .5s ease;
     opacity: 0;
     top: 50%;
-    /* left: 50%; */
+    /* left: 50%;
     transform: translate(0%, 100%);
-    -ms-transform: translate(0%, 0%);
+    -ms-transform: translate(0%, 0%); */
     font-size:18;
     font-style:Bold;
-    display:flex;
-    position: absolute;
+    /* display:flex;
+    position: absolute; */
     align-items:center;
     justify-content:space-between;
     padding:5px

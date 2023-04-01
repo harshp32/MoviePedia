@@ -9,12 +9,10 @@ const MovieList=(props)=>{
                  
                 <img className="img-style" src={movie.Poster} alt="poster" />
                 <div className="inner-style">
-
-                        <p style={{margin:"0px"}}>Type :- {movie.Type}</p><br/>
-                        <p >Year :- {movie.Year}</p> <br />
+                        <p style={{margin:"0px"}}>Title :- {movie.Title}</p>
+                        <p >Year :- {movie.Year}</p>
                 </div> 
-                <br />
-                 <p className="inner-style" style={{margin:"auto auto 5px auto"}}>Title :- {movie.Title}</p>
+                 <p className="inner-style" style={{margin:"auto auto 5px auto"}}>Type :- {movie.Type}</p>
             </div>
         )
     });

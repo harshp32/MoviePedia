@@ -9,7 +9,7 @@ import './App.css';
 
 export const API_KEY="8ae9c9d7"
 
-export default()=>{
+const App = () =>{
     
     const[term, setTerm] = useState('');
     const[movies, setMovies]=useState([]);
@@ -49,11 +49,12 @@ export default()=>{
                  <SearchBar term={term} setTerm={setTerm} />
             </div>
             <div >
-                {movies.length && <Button/>}
+                {movies.length && <Button term={term} setMovies={setMovies}/>}
                 {selectedMovie && <MovieInfo selectedMovie={selectedMovie} onMovieSelect={onMovieSelect} />}
                     <MovieList movies={movies} onMovieSelect={onMovieSelect}/>
             </div>
-            
         </div>
     )
 }
+
+export default App;
