@@ -1,13 +1,10 @@
 import React from "react";
-import './SearchBar.css';
+import './css/SearchBar.css';
 
-const SearchBar = (props)=>{
-   
-    
+const SearchBar = (props)=>{   
     return(
         <div style={{backgroundColor:"black"}} className="ui form">
-            <div className="field sbarStyle">
-              
+            <div className="field sbarStyle">              
                 <input
                     placeholder="Search for any movie"
                     value={props.term}

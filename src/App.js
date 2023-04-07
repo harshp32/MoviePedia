@@ -14,11 +14,14 @@ const App = () =>{
     const[term, setTerm] = useState('');
     const[movies, setMovies]=useState([]);
     const[selectedMovie, onMovieSelect]=useState();
+    const[totalResult, setTotalResult]=useState('');
 
     const fetchData = async (term)=>{
         const response = await axios.get(`http://www.omdbapi.com/?s=${term}&apikey=${API_KEY}`)
         if(response.data.Search){
             setMovies(response.data.Search);
+            setTotalResult(response.data.totalResults);
+            console.log(response.data.totalResults);
         }
     }
 
@@ -36,10 +39,9 @@ const App = () =>{
                         return()=>{
                             clearTimeout(timeoutId);
                         };
-                    }
-                    
+                    }                    
     },[term]);      
-
+     
     return(
         <div>
             <div className="hdr">
@@ -49,7 +51,7 @@ const App = () =>{
                  <SearchBar term={term} setTerm={setTerm} />
             </div>
             <div >
-                {movies.length && <Button term={term} setMovies={setMovies}/>}
+                {movies.length && <Button term={term} setMovies={setMovies} totalResult={totalResult} setTotalResult={setTotalResult}/>}
                 {selectedMovie && <MovieInfo selectedMovie={selectedMovie} onMovieSelect={onMovieSelect} />}
                     <MovieList movies={movies} onMovieSelect={onMovieSelect}/>
             </div>

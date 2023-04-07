@@ -10,11 +10,3 @@
         padding:10px;
         align-items:center        
 }
-
-.genre-button{
-    display: flex;
-    margin: 5px;
-    padding-bottom: 23px;
-    align-items: center;
-    justify-content: space-between;
-}

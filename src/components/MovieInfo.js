@@ -1,7 +1,8 @@
 import React,{useState,useEffect} from "react";
 import axios from 'axios';
 import { API_KEY } from "../App";
-import './MovieInfo.css';
+import './css/MovieInfo.css';
+
 const MovieInfo=(props)=>{
 
     const[movieDetails, setMovieDetails]=useState();
@@ -17,20 +18,20 @@ const MovieInfo=(props)=>{
                     <img src={movieDetails?.Poster} alt="poster"/>
                 </div>
                 <div className="content">
-                    <p className="header">Movie Name :- {movieDetails?.Title}</p>
+                    <p className="header movieInfoText">Movie Name :- {movieDetails?.Title}</p>
                     <div className="description">
                             <button className="tiny ui right floated primary button" onClick={()=>props.onMovieSelect()}>Close</button>
-                        <p>IMDB Rating :- {movieDetails?.imdbRating}</p>
-                        <p>Release :- {movieDetails?.Released}</p>
-                        <p>Runtime :- {movieDetails?.Runtime}</p>
-                        <p>Genre :- {movieDetails?.Genre}</p>
-                        <p>Director :- {movieDetails?.Director}</p>
-                        <p>Writer :- {movieDetails?.Writer}</p>
-                        <p>Actors :- {movieDetails?.Actors}</p>
-                        <p>Language :- {movieDetails?.Language}</p>
-                        <p>Country :- {movieDetails?.Country}</p>
-                        <p>Awards :- {movieDetails?.Awards}</p>
-                        <p>Plot :-{movieDetails?.Plot}</p>
+                        <p className="movieInfoText">IMDB Rating :- {movieDetails?.imdbRating}</p>
+                        <p className="movieInfoText">Release :- {movieDetails?.Released}</p>
+                        <p className="movieInfoText">Runtime :- {movieDetails?.Runtime}</p>
+                        <p className="movieInfoText">Genre :- {movieDetails?.Genre}</p>
+                        <p className="movieInfoText">Director :- {movieDetails?.Director}</p>
+                        <p className="movieInfoText">Writer :- {movieDetails?.Writer}</p>
+                        <p className="movieInfoText">Actors :- {movieDetails?.Actors}</p>
+                        <p className="movieInfoText">Language :- {movieDetails?.Language}</p>
+                        <p className="movieInfoText">Country :- {movieDetails?.Country}</p>
+                        <p className="movieInfoText">Awards :- {movieDetails?.Awards}</p>
+                        <p className="movieInfoText">Plot :-{movieDetails?.Plot}</p>
                     </div>
                 </div>
                 </> : "Loading...."}

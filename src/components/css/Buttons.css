@@ -1,0 +1,37 @@
+.btnOuterStyle{
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
+.genre-button{
+    display: flex;
+    justify-content: space-evenly;
+    
+}
+.pageStyle{
+    display: flex;
+    flex-direction: column;   
+}
+.page-button{
+    display: flex;
+    margin: 10px 25% 5px 25%;
+    justify-content: space-between;
+    font-size: 14px;
+}
+.pageTextStyle{
+    margin-top:10px;
+    text-align: center;
+    color: white;
+}
+.previous-page{
+    opacity: 0.5;
+}
+.p-button{
+    cursor: pointer;
+    border-radius: 8px;
+    color: white;
+    background-color: rgb(20,20,20);
+    padding: 8px;
+    font-size: 10px;
+}
+

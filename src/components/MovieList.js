@@ -1,5 +1,5 @@
 import React from "react";
-import './MovieList.css';
+import './css/MovieList.css';
 
 const MovieList=(props)=>{
 
