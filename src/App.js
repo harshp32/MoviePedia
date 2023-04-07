@@ -1,4 +1,4 @@
-import React,{useState, useEffect} from "react";
+import React,{useState} from "react";
 import axios from "axios";
 import Header from "./components/Header";
 import SearchBar from "./components/SearchBar";
@@ -16,39 +16,23 @@ const App = () =>{
     const[selectedMovie, onMovieSelect]=useState();
     const[totalResult, setTotalResult]=useState('');
 
-    const fetchData = async (term)=>{
-        const response = await axios.get(`http://www.omdbapi.com/?s=${term}&apikey=${API_KEY}`)
-        if(response.data.Search){
-            setMovies(response.data.Search);
-            setTotalResult(response.data.totalResults);
-            console.log(response.data.totalResults);
+        const handleClick=()=>{
+            axios.get(`http://www.omdbapi.com/?s=${term}&apikey=${API_KEY}`)
+                 .then((response)=>{
+                    setMovies(response.data.Search);
+                    setTotalResult(response.data.totalResults);
+                 })
         }
-    }
-
-    useEffect(()=>{
-        
-                if(term && !movies.length){
-                    fetchData(term);
-                }
-                else{
-                    const timeoutId = setTimeout(()=>
-                        {
-                            if(term){
-                                fetchData(term);
-                            }},1000);
-                        return()=>{
-                            clearTimeout(timeoutId);
-                        };
-                    }                    
-    },[term]);      
-     
     return(
         <div>
             <div className="hdr">
                 <Header/>
-            </div>
+            </div>     
             <div>
-                 <SearchBar term={term} setTerm={setTerm} />
+                <SearchBar term={term} setTerm={setTerm} />
+            </div>       
+            <div className="searchBarSection">                 
+                 <button className="searchButton" onClick={handleClick}>Search</button>
             </div>
             <div >
                 {movies.length && <Button term={term} setMovies={setMovies} totalResult={totalResult} setTotalResult={setTotalResult}/>}

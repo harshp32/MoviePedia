@@ -12,3 +12,13 @@ body{
     background-color: rgb(20, 20, 20);
     text-align: center;
 }
+.searchBarSection{
+    text-align: center;
+    margin: 0.5%;
+}
+.searchButton{
+    background-color: rgb(20, 20, 20);
+    color: white;
+    padding: 5px 10px 5px 10px;
+    cursor: pointer;
+}

@@ -6,7 +6,7 @@ const SearchBar = (props)=>{
         <div style={{backgroundColor:"black"}} className="ui form">
             <div className="field sbarStyle">              
                 <input
-                    placeholder="Search for any movie"
+                    placeholder="Type here to search for any movie"
                     value={props.term}
                     onChange={e=>props.setTerm(e.target.value)}
                     className="input barStyle" />

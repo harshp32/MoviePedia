@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React, { useState } from "react";
 import axios from "axios";
 import { API_KEY } from "../App";
 import './css/Buttons.css';
@@ -6,9 +6,51 @@ import './css/Buttons.css';
 const Button = ({term, setMovies, totalResult, setTotalResult}) => {
   const [genre, setGenre] = useState("");
   const [page, setPage] = useState(1);
+  
+    const movieClick=() => {
+        axios
+        .get(
+            `http://www.omdbapi.com/?s=${term}&apikey=${API_KEY}&type=movie`
+        )
+        .then((response) => 
+                {
+                    setMovies(response.data.Search);
+                    setTotalResult(response.data.totalResults);
+                    setPage(1);
+                    setGenre("movie");
+                });
+    };
+
+    const seriesClick=() => {
+        axios
+        .get(
+            `http://www.omdbapi.com/?s=${term}&apikey=${API_KEY}&type=series`
+        )
+        .then((response) => 
+                {
+                    setMovies(response.data.Search);
+                    setTotalResult(response.data.totalResults);
+                    setPage(1);
+                    setGenre("series");
+                });
+    };
+
+    const gameClick=() => {
+        axios
+        .get(
+            `http://www.omdbapi.com/?s=${term}&apikey=${API_KEY}&type=game`
+        )
+        .then((response) => 
+                {
+                    setMovies(response.data.Search);
+                    setTotalResult(response.data.totalResults);
+                    setPage(1);
+                    setGenre("game")
+                });
+    };
 
   const handlePreviousClick=()=>{
-    if(page>1){
+    
         axios
             .get(`http://www.omdbapi.com/?s=${term}&apikey=${API_KEY}&type=${genre}&page=${page}`)
             .then((response)=>{
@@ -16,7 +58,6 @@ const Button = ({term, setMovies, totalResult, setTotalResult}) => {
             setTotalResult(response.data.totalResults);
             setPage(page-1);
         });
-    }
     };
       
     const handleNextClick=()=>{
@@ -27,50 +68,47 @@ const Button = ({term, setMovies, totalResult, setTotalResult}) => {
             setTotalResult(response.data.totalResults);
             setPage(page+1);
         });
-  };
-  const showPreviousButton=()=>{
-    if(page<1){
-        return(
-            <button className="previous-page p-button">
-            Previous Page
-             </button>
+    };
+    const showPreviousButton=()=>{
+        if(page<=1){
+            return(
+                <button className="previous-page p-button">
+                Previous Page
+                </button>
+            )
+        }
+        return (
+            <button className="p-button" onClick={handlePreviousClick}>Previous Page</button>
         )
     }
-    return (
-        <button className="p-button" onClick={handlePreviousClick}>Previous Page</button>
-    )
-  }
+    const showNextButton=()=>{
+        if(page>=Math.floor(totalResult / 10)){
+            return(
+                <button className="previous-page p-button">
+                    Next Page
+                 </button>
+            )
+        }
+        return (
+            <button className="p-button" onClick={handleNextClick}>Next Page</button>
+        )
+      }
 
-  useEffect(() => {
-    axios
-      .get(
-        `http://www.omdbapi.com/?s=${term}&apikey=${API_KEY}&type=${genre}`
-      )
-      .then((response) => 
-            {
-                setMovies(response.data.Search);
-                setTotalResult(response.data.totalResults);
-                setPage(1);
-            });
-  }, [genre]);
   return (
     <div className="btnOuterStyle">
       <div className="genre-button">
-        <button
+        <button onClick={movieClick}
           className="tiny ui floated primary button"
-          onClick={() => setGenre("movie")}
         >
           Movies
         </button>
-        <button
+        <button onClick={seriesClick}
           className="tiny ui floated primary button"
-          onClick={() => setGenre("series")}
         >
           Series
         </button>
-        <button
+        <button onClick={gameClick}
           className="tiny ui floated primary button"
-          onClick={() => setGenre("game")}
         >
           Games
         </button>
@@ -78,13 +116,11 @@ const Button = ({term, setMovies, totalResult, setTotalResult}) => {
       <div className="pageStyle">
          <div className="pageTextStyle">
           Total Pages = {Math.floor(totalResult / 10)} <br/>
-          Current page = {page}
         </div>
         <div className="page-button">
-            <button className="p-button" onClick={handleNextClick}>Next Page</button>
+             {showNextButton()}
              {showPreviousButton()}
         </div>
-       
       </div>
     </div>
   );

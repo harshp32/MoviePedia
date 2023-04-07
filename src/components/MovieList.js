@@ -3,7 +3,7 @@ import './css/MovieList.css';
 
 const MovieList=(props)=>{
 
-    const renderedList = props.movies.map((movie, index)=>{
+    const renderedList = props.movies.map((movie, id)=>{
         return(
             <div className="outer-style" onClick={()=>props.onMovieSelect(movie.imdbID)}>
                  
