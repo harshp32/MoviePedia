@@ -17,7 +17,7 @@ const App = () =>{
     const[totalResult, setTotalResult]=useState('');
 
         const handleClick=()=>{
-            axios.get(`http://www.omdbapi.com/?s=${term}&apikey=${API_KEY}`)
+            axios.get(`https://www.omdbapi.com/?s=${term}&apikey=${API_KEY}`)
                  .then((response)=>{
                     setMovies(response.data.Search);
                     setTotalResult(response.data.totalResults);

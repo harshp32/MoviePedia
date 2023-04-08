@@ -10,7 +10,7 @@ const Button = ({term, setMovies, totalResult, setTotalResult}) => {
     const movieClick=() => {
         axios
         .get(
-            `http://www.omdbapi.com/?s=${term}&apikey=${API_KEY}&type=movie`
+            `https://www.omdbapi.com/?s=${term}&apikey=${API_KEY}&type=movie`
         )
         .then((response) => 
                 {
@@ -24,7 +24,7 @@ const Button = ({term, setMovies, totalResult, setTotalResult}) => {
     const seriesClick=() => {
         axios
         .get(
-            `http://www.omdbapi.com/?s=${term}&apikey=${API_KEY}&type=series`
+            `https://www.omdbapi.com/?s=${term}&apikey=${API_KEY}&type=series`
         )
         .then((response) => 
                 {
@@ -38,7 +38,7 @@ const Button = ({term, setMovies, totalResult, setTotalResult}) => {
     const gameClick=() => {
         axios
         .get(
-            `http://www.omdbapi.com/?s=${term}&apikey=${API_KEY}&type=game`
+            `https://www.omdbapi.com/?s=${term}&apikey=${API_KEY}&type=game`
         )
         .then((response) => 
                 {
@@ -52,7 +52,7 @@ const Button = ({term, setMovies, totalResult, setTotalResult}) => {
   const handlePreviousClick=()=>{
     
         axios
-            .get(`http://www.omdbapi.com/?s=${term}&apikey=${API_KEY}&type=${genre}&page=${page}`)
+            .get(`https://www.omdbapi.com/?s=${term}&apikey=${API_KEY}&type=${genre}&page=${page}`)
             .then((response)=>{
             setMovies(response.data.Search);
             setTotalResult(response.data.totalResults);
@@ -62,7 +62,7 @@ const Button = ({term, setMovies, totalResult, setTotalResult}) => {
       
     const handleNextClick=()=>{
             axios
-            .get(`http://www.omdbapi.com/?s=${term}&apikey=${API_KEY}&type=${genre}&page=${page}`)
+            .get(`https://www.omdbapi.com/?s=${term}&apikey=${API_KEY}&type=${genre}&page=${page}`)
             .then((response)=>{
             setMovies(response.data.Search);
             setTotalResult(response.data.totalResults);
