@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import axios from "axios";
-import { API_KEY } from "../App";
+import { api_key } from "../App";
 import './css/Buttons.css';
 
 const Button = ({term, setMovies, totalResult, setTotalResult}) => {
@@ -10,7 +10,7 @@ const Button = ({term, setMovies, totalResult, setTotalResult}) => {
     const movieClick=() => {
         axios
         .get(
-            `https://www.omdbapi.com/?s=${term}&apikey=${API_KEY}&type=movie`
+            `https://www.omdbapi.com/?s=${term}&apikey=${api_key}&type=movie`
         )
         .then((response) => 
                 {
@@ -24,7 +24,7 @@ const Button = ({term, setMovies, totalResult, setTotalResult}) => {
     const seriesClick=() => {
         axios
         .get(
-            `https://www.omdbapi.com/?s=${term}&apikey=${API_KEY}&type=series`
+            `https://www.omdbapi.com/?s=${term}&apikey=${api_key}&type=series`
         )
         .then((response) => 
                 {
@@ -38,7 +38,7 @@ const Button = ({term, setMovies, totalResult, setTotalResult}) => {
     const gameClick=() => {
         axios
         .get(
-            `https://www.omdbapi.com/?s=${term}&apikey=${API_KEY}&type=game`
+            `https://www.omdbapi.com/?s=${term}&apikey=${api_key}&type=game`
         )
         .then((response) => 
                 {
@@ -52,7 +52,7 @@ const Button = ({term, setMovies, totalResult, setTotalResult}) => {
   const handlePreviousClick=()=>{
     
         axios
-            .get(`https://www.omdbapi.com/?s=${term}&apikey=${API_KEY}&type=${genre}&page=${page}`)
+            .get(`https://www.omdbapi.com/?s=${term}&apikey=${api_key}&type=${genre}&page=${page}`)
             .then((response)=>{
             setMovies(response.data.Search);
             setTotalResult(response.data.totalResults);
@@ -62,7 +62,7 @@ const Button = ({term, setMovies, totalResult, setTotalResult}) => {
       
     const handleNextClick=()=>{
             axios
-            .get(`https://www.omdbapi.com/?s=${term}&apikey=${API_KEY}&type=${genre}&page=${page}`)
+            .get(`https://www.omdbapi.com/?s=${term}&apikey=${api_key}&type=${genre}&page=${page}`)
             .then((response)=>{
             setMovies(response.data.Search);
             setTotalResult(response.data.totalResults);
@@ -94,6 +94,20 @@ const Button = ({term, setMovies, totalResult, setTotalResult}) => {
         )
       }
 
+    const TotalPages=()=>{
+        if(Math.floor(totalResult / 10)===0){
+          return(
+            <div>
+              Total Page = 1
+            </div>
+          )
+        }
+        return(
+          <div>
+              Total Pages = {Math.floor(totalResult / 10)}
+            </div>
+        )
+    }
   return (
     <div className="btnOuterStyle">
       <div className="genre-button">
@@ -115,7 +129,7 @@ const Button = ({term, setMovies, totalResult, setTotalResult}) => {
       </div>
       <div className="pageStyle">
          <div className="pageTextStyle">
-          Total Pages = {Math.floor(totalResult / 10)} <br/>
+          {TotalPages()} <br/>
         </div>
         <div className="page-button">
              {showNextButton()}

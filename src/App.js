@@ -7,7 +7,7 @@ import MovieInfo from "./components/MovieInfo";
 import Button from "./components/Buttons";
 import './App.css';
 
-export const API_KEY="8ae9c9d7"
+export const api_key = process.env.REACT_APP_API_KEY;
 
 const App = () =>{
     
@@ -17,7 +17,7 @@ const App = () =>{
     const[totalResult, setTotalResult]=useState('');
 
         const handleClick=()=>{
-            axios.get(`https://www.omdbapi.com/?s=${term}&apikey=${API_KEY}`)
+            axios.get(`https://www.omdbapi.com/?s=${term}&apikey=${api_key}`)
                  .then((response)=>{
                     setMovies(response.data.Search);
                     setTotalResult(response.data.totalResults);
