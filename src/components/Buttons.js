@@ -78,7 +78,7 @@ const Button = ({term, setMovies, totalResult, setTotalResult}) => {
             )
         }
         return (
-            <button className="p-button" onClick={handlePreviousClick}>Previous Page</button>
+            <button className="p-button xyz" onClick={handlePreviousClick}>Previous Page</button>
         )
     }
     const showNextButton=()=>{

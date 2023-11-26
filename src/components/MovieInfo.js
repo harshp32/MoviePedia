@@ -17,7 +17,7 @@ const MovieInfo=(props)=>{
                 <div className="image">
                     <img src={movieDetails?.Poster} alt="poster"/>
                 </div>
-                <div className="content">
+                <div className="content xyz">
                     <p className="header movieInfoText">Movie Name :- {movieDetails?.Title}</p>
                     <div className="description">
                             <button className="tiny ui right floated primary button" onClick={()=>props.onMovieSelect()}>Close</button>
